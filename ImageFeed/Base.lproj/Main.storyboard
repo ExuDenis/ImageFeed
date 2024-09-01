@@ -50,7 +50,7 @@
                                                         <constraint firstAttribute="width" constant="44" id="UFb-cd-T9P"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="Like on"/>
+                                                    <state key="normal" image="Like_on"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -99,7 +99,7 @@
     </scenes>
     <resources>
         <image name="0" width="1600" height="1059"/>
-        <image name="Like on" width="42" height="42"/>
+        <image name="Like_on" width="42" height="42"/>
         <namedColor name="Background Color">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
