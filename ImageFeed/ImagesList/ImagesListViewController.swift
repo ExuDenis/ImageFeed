@@ -8,10 +8,9 @@
 import UIKit
 
 final class ImagesListViewController: UIViewController {
+    
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     
-    
-    //Метод который при нажатии на картинку , открывает именно эту картинку на которую нажали
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showSingleImageSegueIdentifier { // 1
             guard
@@ -64,6 +63,8 @@ extension ImagesListViewController: UITableViewDataSource {
         guard let imageListCell = cell as? ImagesListCell else {
             return UITableViewCell()
         }
+        
+        imageListCell.selectionStyle = .none
         //Метод вызова
         configCell(for: imageListCell, with: indexPath)
         return imageListCell
