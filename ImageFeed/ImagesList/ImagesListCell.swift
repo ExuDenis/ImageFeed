@@ -4,8 +4,6 @@
 //
 //  Created by Денис Филатов on 31.08.2024.
 //
-
-import Foundation
 import UIKit
 
 final class ImagesListCell: UITableViewCell {
@@ -27,3 +25,5 @@ final class ImagesListCell: UITableViewCell {
         likeButton.setImage(likeImage, for: .normal)
     }
 }
+
+
