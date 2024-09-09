@@ -9,6 +9,25 @@ import UIKit
 
 final class ImagesListViewController: UIViewController {
     
+    private let showSingleImageSegueIdentifier = "ShowSingleImage"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showSingleImageSegueIdentifier { // 1
+            guard
+                let viewController = segue.destination as? SingleImageViewController, // 2
+                let indexPath = sender as? IndexPath // 3
+            else {
+                assertionFailure("Invalid segue destination") // 4
+                return
+            }
+            
+            let image = UIImage(named: photosName[indexPath.row]) // 5
+            viewController.image = image // 6
+        } else {
+            super.prepare(for: segue, sender: sender) // 7
+        }
+    }
+    
     @IBOutlet private var tableView: UITableView!
     
     //Содержит строки, представляющие названия изображений
@@ -16,7 +35,8 @@ final class ImagesListViewController: UIViewController {
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMMM yyyy"
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
         return formatter
     }()
     
@@ -43,6 +63,8 @@ extension ImagesListViewController: UITableViewDataSource {
         guard let imageListCell = cell as? ImagesListCell else {
             return UITableViewCell()
         }
+        
+        imageListCell.selectionStyle = .none
         //Метод вызова
         configCell(for: imageListCell, with: indexPath)
         return imageListCell
@@ -56,7 +78,6 @@ extension ImagesListViewController {
             return
         }
         
-        
         let isLiked = indexPath.row % 2 == 0
         cell.configure(with: image, date: Date(), isLiked: isLiked)
     }
@@ -65,7 +86,10 @@ extension ImagesListViewController {
 //Отвечает за поведение таблицы
 extension ImagesListViewController: UITableViewDelegate {
     //Обрабатывает выбор строки
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        //Осуществление перехода при нажатии на картинку
+        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
+    }
     
     //Динамически вычисляет высоту строки на основе размеров изображения и отступов.
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,5 +111,7 @@ extension ImagesListViewController: UITableViewDelegate {
         return cellHeight
     }
 }
+
+
 
 
