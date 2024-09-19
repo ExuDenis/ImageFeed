@@ -13,6 +13,7 @@
 		92027F1E2C80B18300200EFB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 92027F1D2C80B18300200EFB /* Base */; };
 		92027F202C80B18400200EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92027F1F2C80B18400200EFB /* Assets.xcassets */; };
 		92027F232C80B18400200EFB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 92027F222C80B18400200EFB /* Base */; };
+		921A335C2C9C693F005FB38E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A335B2C9C693F005FB38E /* Constants.swift */; };
 		92915B212C85993800CCEFB5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92915B202C85993800CCEFB5 /* ProfileViewController.swift */; };
 		92915B232C87542D00CCEFB5 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92915B222C87542D00CCEFB5 /* SingleImageViewController.swift */; };
 		92C6E69C2C83516C007826DF /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6E69B2C83516C007826DF /* ImagesListCell.swift */; };
@@ -27,6 +28,7 @@
 		92027F1F2C80B18400200EFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92027F222C80B18400200EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92027F242C80B18400200EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		921A335B2C9C693F005FB38E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		92915B202C85993800CCEFB5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		92915B222C87542D00CCEFB5 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		92C6E69B2C83516C007826DF /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		92027F0A2C80B18300200EFB = {
 			isa = PBXGroup;
 			children = (
+				921A335A2C9C692B005FB38E /* API */,
 				92027F152C80B18300200EFB /* ImageFeed */,
 				92027F142C80B18300200EFB /* Products */,
 			);
@@ -73,6 +76,14 @@
 				92027F242C80B18400200EFB /* Info.plist */,
 			);
 			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		921A335A2C9C692B005FB38E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				921A335B2C9C693F005FB38E /* Constants.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		9278D3D52C889340004135A2 /* Profile */ = {
@@ -175,6 +186,7 @@
 				92C6E69C2C83516C007826DF /* ImagesListCell.swift in Sources */,
 				92915B212C85993800CCEFB5 /* ProfileViewController.swift in Sources */,
 				92027F172C80B18300200EFB /* AppDelegate.swift in Sources */,
+				921A335C2C9C693F005FB38E /* Constants.swift in Sources */,
 				92915B232C87542D00CCEFB5 /* SingleImageViewController.swift in Sources */,
 				92027F192C80B18300200EFB /* SceneDelegate.swift in Sources */,
 			);
