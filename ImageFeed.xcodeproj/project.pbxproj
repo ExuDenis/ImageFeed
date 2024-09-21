@@ -14,6 +14,8 @@
 		92027F202C80B18400200EFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92027F1F2C80B18400200EFB /* Assets.xcassets */; };
 		92027F232C80B18400200EFB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 92027F222C80B18400200EFB /* Base */; };
 		921A335C2C9C693F005FB38E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A335B2C9C693F005FB38E /* Constants.swift */; };
+		921A335E2C9EEBF9005FB38E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A335D2C9EEBF8005FB38E /* AuthViewController.swift */; };
+		921A33612C9EEEAA005FB38E /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A33602C9EEEAA005FB38E /* WebViewViewController.swift */; };
 		92915B212C85993800CCEFB5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92915B202C85993800CCEFB5 /* ProfileViewController.swift */; };
 		92915B232C87542D00CCEFB5 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92915B222C87542D00CCEFB5 /* SingleImageViewController.swift */; };
 		92C6E69C2C83516C007826DF /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6E69B2C83516C007826DF /* ImagesListCell.swift */; };
@@ -29,6 +31,8 @@
 		92027F222C80B18400200EFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92027F242C80B18400200EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		921A335B2C9C693F005FB38E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		921A335D2C9EEBF8005FB38E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		921A33602C9EEEAA005FB38E /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		92915B202C85993800CCEFB5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		92915B222C87542D00CCEFB5 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		92C6E69B2C83516C007826DF /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		92027F152C80B18300200EFB /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				921A335F2C9EEE95005FB38E /* Auth */,
 				9278D3D62C889366004135A2 /* SingleImageView */,
 				9278D3D52C889340004135A2 /* Profile */,
 				92C6E69D2C8351A2007826DF /* ImagesList */,
@@ -84,6 +89,15 @@
 				921A335B2C9C693F005FB38E /* Constants.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		921A335F2C9EEE95005FB38E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				921A335D2C9EEBF8005FB38E /* AuthViewController.swift */,
+				921A33602C9EEEAA005FB38E /* WebViewViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		9278D3D52C889340004135A2 /* Profile */ = {
@@ -186,8 +200,10 @@
 				92C6E69C2C83516C007826DF /* ImagesListCell.swift in Sources */,
 				92915B212C85993800CCEFB5 /* ProfileViewController.swift in Sources */,
 				92027F172C80B18300200EFB /* AppDelegate.swift in Sources */,
+				921A335E2C9EEBF9005FB38E /* AuthViewController.swift in Sources */,
 				921A335C2C9C693F005FB38E /* Constants.swift in Sources */,
 				92915B232C87542D00CCEFB5 /* SingleImageViewController.swift in Sources */,
+				921A33612C9EEEAA005FB38E /* WebViewViewController.swift in Sources */,
 				92027F192C80B18300200EFB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
