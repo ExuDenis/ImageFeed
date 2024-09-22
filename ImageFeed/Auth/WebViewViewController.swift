@@ -17,6 +17,8 @@ protocol WebViewViewControllerDelegate: AnyObject {
 final class WebViewViewController: UIViewController {
     @IBOutlet private var webView: WKWebView!
 
+    @IBOutlet private var progressView: UIProgressView!
+    
     weak var delegate: WebViewViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -26,10 +28,10 @@ final class WebViewViewController: UIViewController {
 
         var urlComponents = URLComponents(string: UnsplashAuthorizeURLString)!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: AccessKey),
-            URLQueryItem(name: "redirect_uri", value: RedirectURI),
+            URLQueryItem(name: "client_id", value: Constant.AccessKey),
+            URLQueryItem(name: "redirect_uri", value: Constant.RedirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: AccessScope)
+            URLQueryItem(name: "scope", value: Constant.AccessScope)
         ]
         let url = urlComponents.url!
 
