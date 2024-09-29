@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="1999" y="358"/>
         </scene>
-        <!--TabBarViewController-->
+        <!--Tab Bar Controller-->
         <scene sceneID="FUG-Vw-5cl">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" title="TabBarViewController" id="nAC-QG-hps" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="nAC-QG-hps" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XNQ-vT-3wI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -7,29 +7,67 @@
 
 import Foundation
 
-class OAuth2Service {
-    private let session = URLSession.shared
+final class OAuth2Service {
     
-    func fetchOAuthToken(code: String, completion: @escaping (Result<String, Error>) -> Void) {
+    var authToken: String? {
+        get {
+            OAuth2TokenStorage().token
+        }
+        set {
+            OAuth2TokenStorage().token = newValue
+        }
+    }
+    
+    static let shared = OAuth2Service()
+    
+    private let decoder = JSONDecoder()
+    
+    private let urlSession = URLSession.shared
+    
+    private enum NetworkError: Error {
+        case codeError
+    }
+    
+    private enum OAuth2ServiceConstants {
+        static let unsplashGetTokenURLString = "https://unsplash.com/oauth/token"
+    }
+    
+    private init() {}
+    
+    func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, any Error>) -> Void) {
+        
         let request = makeOAuthTokenRequest(code: code)
-        let task = session.data(for: request) { result in
+        
+        let task = urlSession.data(for: request) { [weak self] result in
+            
+            guard let self else { preconditionFailure("self is unavalible") }
+            
             switch result {
             case .success(let data):
+                
                 do {
-                    let response = try JSONDecoder().decode(OAuthTokenResponseBody.self, from: data)
-                    completion(.success(response.accessToken))
+                    let OAuthTokenResponseBody = try decoder.decode(OAuthTokenResponseBody.self, from: data)
+                    print(OAuthTokenResponseBody)
+                    print(OAuthTokenResponseBody.accessToken)
+                    self.authToken = OAuthTokenResponseBody.accessToken
+                    completion(.success(OAuthTokenResponseBody.accessToken))
                 } catch {
                     completion(.failure(error))
                 }
+                
             case .failure(let error):
                 completion(.failure(error))
+                
             }
         }
         task.resume()
     }
     
-    private func makeOAuthTokenRequest(code: String) -> URLRequest {
-        var urlComponents = URLComponents(string: "https://unsplash.com/oauth/token")!
+    func makeOAuthTokenRequest(code: String) -> URLRequest {
+        guard var urlComponents = URLComponents(string: OAuth2ServiceConstants.unsplashGetTokenURLString) else {
+            preconditionFailure("invalide sheme or host name")
+        }
+        
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.AccessKey),
             URLQueryItem(name: "client_secret", value: Constants.SecretKey),
@@ -38,8 +76,19 @@ class OAuth2Service {
             URLQueryItem(name: "grant_type", value: "authorization_code")
         ]
         
-        var request = URLRequest(url: urlComponents.url!)
+        guard let url = urlComponents.url else {
+            preconditionFailure("Cannot make url")
+        }
+        
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        print(request)
         return request
+    }
+    
+    
+    protocol WebViewViewControllerDelegate: AnyObject {
+        func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
+        func webViewViewControllerDidCancel(_ vc: WebViewViewController)
     }
 }
