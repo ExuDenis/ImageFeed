@@ -4,7 +4,6 @@
 //
 //  Created by Денис Филатов on 29.09.2024.
 //
-
 import Foundation
 
 final class OAuth2Service {
@@ -21,7 +20,6 @@ final class OAuth2Service {
     static let shared = OAuth2Service()
     
     private let decoder = JSONDecoder()
-    
     private let urlSession = URLSession.shared
     
     private enum NetworkError: Error {
@@ -35,29 +33,20 @@ final class OAuth2Service {
     private init() {}
     
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, any Error>) -> Void) {
-        
         let request = makeOAuthTokenRequest(code: code)
-        
         let task = urlSession.data(for: request) { [weak self] result in
-            
             guard let self else { preconditionFailure("self is unavalible") }
-            
             switch result {
             case .success(let data):
-                
                 do {
-                    let OAuthTokenResponseBody = try decoder.decode(OAuthTokenResponseBody.self, from: data)
-                    print(OAuthTokenResponseBody)
-                    print(OAuthTokenResponseBody.accessToken)
+                    let OAuthTokenResponseBody = try self.decoder.decode(OAuthTokenResponseBody.self, from: data)
                     self.authToken = OAuthTokenResponseBody.accessToken
                     completion(.success(OAuthTokenResponseBody.accessToken))
                 } catch {
                     completion(.failure(error))
                 }
-                
             case .failure(let error):
                 completion(.failure(error))
-                
             }
         }
         task.resume()
@@ -82,13 +71,6 @@ final class OAuth2Service {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        print(request)
         return request
-    }
-    
-    
-    protocol WebViewViewControllerDelegate: AnyObject {
-        func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
-        func webViewViewControllerDidCancel(_ vc: WebViewViewController)
     }
 }

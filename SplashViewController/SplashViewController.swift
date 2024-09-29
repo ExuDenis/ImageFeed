@@ -4,7 +4,6 @@
 //
 //  Created by Денис Филатов on 29.09.2024.
 //
-
 import UIKit
 
 final class SplashViewController: UIViewController, AuthViewControllerDelegate {
@@ -24,10 +23,8 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
         .lightContent
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,12 +35,10 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
         } else {
             performSegue(withIdentifier: SplashViewControllerConstants.showAuthenticationScreenSegueIdentifier, sender: nil)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SplashViewControllerConstants.showAuthenticationScreenSegueIdentifier {
-            
             guard
                 let navigationController = segue.destination as? UINavigationController,
                 let viewController = navigationController.viewControllers[0] as? AuthViewController
@@ -51,9 +46,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
                 assertionFailure("Failed to prepare for \(SplashViewControllerConstants.showAuthenticationScreenSegueIdentifier)")
                 return
             }
-            
             viewController.delegate = self
-            
         } else {
             super.prepare(for: segue, sender: sender)
         }
@@ -65,6 +58,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
             self.fetchOAuthToken(code)
         }
     }
+
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
@@ -84,5 +78,4 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
         }
     }
 }
-
 

@@ -1,5 +1,5 @@
 //
-//  Token.swift
+//  OAuthTokenResponseBody.swift
 //  ImageFeed
 //
 //  Created by Денис Филатов on 29.09.2024.
@@ -7,7 +7,6 @@
 import Foundation
 
 struct OAuthTokenResponseBody: Decodable {
-    
     let accessToken: String
     let tokenType: String
     let scope: String
@@ -19,9 +18,4 @@ struct OAuthTokenResponseBody: Decodable {
         case scope
         case createdAt = "created_at"
     }
-    
-    private enum ParseError: Error {
-        case createdAtFailure
-    }
 }
-
