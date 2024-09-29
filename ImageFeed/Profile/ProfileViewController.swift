@@ -17,6 +17,13 @@ final class ProfileViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var noPhoto: UIImageView = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(named: "NoPhoto")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -55,6 +62,15 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    private lazy var favoritesLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.text = "Избранное"
+        label.font = UIFont.systemFont(ofSize: 23)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -71,6 +87,8 @@ final class ProfileViewController: UIViewController {
         view.addSubview(loginNameLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(logoutButton)
+        view.addSubview(favoritesLabel)
+        view.addSubview(noPhoto)
         
         NSLayoutConstraint.activate([
             // Avatar Image View Constraints
@@ -95,11 +113,22 @@ final class ProfileViewController: UIViewController {
             descriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8),
             
             // Logout Button Constraints
-            logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -16),
             logoutButton.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
             logoutButton.widthAnchor.constraint(equalToConstant: 44),
-            logoutButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
+            logoutButton.heightAnchor.constraint(equalToConstant: 44),
+            
+            //Favorites Label Constraints
+            favoritesLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
+            favoritesLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            favoritesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24),
+            
+            //No Photo Image View Constraints
+            noPhoto.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 130),
+            noPhoto.topAnchor.constraint(equalTo: favoritesLabel.bottomAnchor, constant: 110),
+            noPhoto.widthAnchor.constraint(equalToConstant: 115),
+            noPhoto.heightAnchor.constraint(equalToConstant: 115)
+            ])
     }
     
     @objc
