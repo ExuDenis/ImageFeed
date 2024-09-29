@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constant {
+struct Constants {
     static let AccessKey = "cpXs45VJuuRy_L2iKGZo7OXBndP3JxTCBuD41OMTkJs"
     static let SecretKey = "dje45kKjfQo5nZn63I0vTaKfx7U4E9IJys4INtsGc30"
     static let RedirectURI = "urn:ietf:wg:oauth:2.0:oob"

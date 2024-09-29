@@ -31,9 +31,9 @@ class OAuth2Service {
     private func makeOAuthTokenRequest(code: String) -> URLRequest {
         var urlComponents = URLComponents(string: "https://unsplash.com/oauth/token")!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constant.AccessKey),
-            URLQueryItem(name: "client_secret", value: Constant.SecretKey),
-            URLQueryItem(name: "redirect_uri", value: Constant.RedirectURI),
+            URLQueryItem(name: "client_id", value: Constants.AccessKey),
+            URLQueryItem(name: "client_secret", value: Constants.SecretKey),
+            URLQueryItem(name: "redirect_uri", value: Constants.RedirectURI),
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "grant_type", value: "authorization_code")
         ]
